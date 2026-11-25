@@ -33,6 +33,7 @@ export interface Look {
   stroke: number;
   topfade: number;
   font: string;
+  weight: number;
 }
 
 export type Settings = Channels & Look;
@@ -58,7 +59,8 @@ const DEFAULT_LOOK: Look = {
   size: 22,
   stroke: 0,
   topfade: 0,
-  font: 'Inter'
+  font: 'Inter',
+  weight: 400
 };
 
 export const defaultSettings = (): Settings => ({ ...DEFAULT_CHANNELS, ...DEFAULT_LOOK });
@@ -70,7 +72,7 @@ const ICON_KEYS = { twitch: 'iconTwitch', kick: 'iconKick', youtube: 'iconYoutub
 const ICON_SET = new Set<string>(Object.values(ICON_KEYS));
 
 const BOOL_KEYS = (Object.keys(DEFAULT_LOOK) as (keyof Look)[]).filter((k) => typeof DEFAULT_LOOK[k] === 'boolean' && !ICON_SET.has(k)) as BoolKey[];
-const NUM_KEYS: NumKey[] = ['fade', 'size', 'stroke', 'shadow', 'topfade'];
+const NUM_KEYS: NumKey[] = ['fade', 'size', 'stroke', 'shadow', 'topfade', 'weight'];
 
 function iconsToParam(s: Look): string | null {
   const on = (Object.keys(ICON_KEYS) as (keyof typeof ICON_KEYS)[]).filter((p) => s[ICON_KEYS[p]]);

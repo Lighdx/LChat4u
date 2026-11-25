@@ -21,13 +21,14 @@ function loadFont(name: string) {
     fontLink.onerror = null;
     fontLink.href = `https://fonts.googleapis.com/css2?family=${family}&display=swap`;
   };
-  fontLink.href = `https://fonts.googleapis.com/css2?family=${family}:wght@400;700;800&display=swap`;
+  fontLink.href = `https://fonts.googleapis.com/css2?family=${family}:wght@400;500;600;700;800&display=swap`;
 }
 
 export function applyStyle() {
   root.style.setProperty('--size', opt.size + 'px');
   root.style.setProperty('--font', `'${opt.font.replace(/'/g, '')}', 'Inter', system-ui, sans-serif`);
   root.style.setProperty('--align', opt.align);
+  root.style.setProperty('--weight', String(Math.min(Math.max(opt.weight, 100), 900)));
   loadFont(opt.font);
 
   chat.classList.toggle('caps', opt.caps);
@@ -61,7 +62,7 @@ export function applyStyle() {
 
 const LIVE_KEYS = [
   'iconTwitch', 'iconKick', 'iconYoutube', 'bots', 'hidecmd', 'caps', 'shadow', 'badges', 'fixcolors',
-  'anim', 'align', 'fade', 'size', 'stroke', 'topfade', 'font'
+  'anim', 'align', 'fade', 'size', 'stroke', 'topfade', 'font', 'weight'
 ] as const satisfies readonly (keyof Look)[];
 
 export function listenForLiveSettings() {

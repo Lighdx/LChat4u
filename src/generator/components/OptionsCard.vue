@@ -36,6 +36,8 @@ const fontChoice = computed({
 
 const off = (v: number, unit: string, zero = 'off') => (v ? v + unit : zero);
 
+const WEIGHT_NAMES: Record<number, string> = { 400: 'regular', 500: 'medium', 600: 'semibold', 700: 'bold', 800: 'extra bold' };
+
 const PLATFORMS = [
   { platform: 'twitch', key: 'iconTwitch', label: 'Twitch' },
   { platform: 'kick', key: 'iconKick', label: 'Kick' },
@@ -62,6 +64,10 @@ const PLATFORMS = [
       <div class="set">
         <label for="size">Size<span class="val">{{ settings.size }} px</span></label>
         <input id="size" v-model.number="settings.size" type="range" min="12" max="56" step="1">
+      </div>
+      <div class="set">
+        <label for="weight">Message weight<span class="val">{{ WEIGHT_NAMES[settings.weight] ?? settings.weight }}</span></label>
+        <input id="weight" v-model.number="settings.weight" type="range" min="400" max="800" step="100">
       </div>
       <ToggleSwitch v-model="settings.caps" label="Caps" />
       <ToggleSwitch v-model="settings.fixcolors" label="Brighten dark names" />
@@ -104,14 +110,7 @@ const PLATFORMS = [
       <div class="set">
         <span id="plat-lbl">Show platform</span>
         <div class="seg multi" role="group" aria-labelledby="plat-lbl">
-          <button
-            v-for="o in PLATFORMS"
-            :key="o.platform"
-            type="button"
-            :aria-pressed="settings[o.key]"
-            :title="o.label"
-            @click="settings[o.key] = !settings[o.key]"
-          >
+          <button v-for="o in PLATFORMS" :key="o.platform" type="button" :aria-pressed="settings[o.key]" :title="o.label" @click="settings[o.key] = !settings[o.key]">
             <img :src="PLATFORM_ICON[o.platform]" alt="">
             {{ o.label }}
           </button>

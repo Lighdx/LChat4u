@@ -72,6 +72,10 @@ body {
   margin-right: .3em;
 }
 
+.text {
+  font-weight: var(--weight, 400);
+}
+
 .action .text {
   font-style: italic;
 }

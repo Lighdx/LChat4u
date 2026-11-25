@@ -69,7 +69,8 @@ The generator writes these; you rarely need them by hand.
 | `align` | `left`, `center`, `right` |
 | `size`, `stroke`, `fade` | px, px, seconds (0 = never) |
 | `topfade` | % of the height that fades out at the top (0 = off) |
-| `font` | any Google Fonts family |
+| `font` | any Google Fonts family (or a font installed on the PC) |
+| `weight` | message text weight `400`-`800` (default `400`; names are always `800`) |
 | `kickkey`, `kickcluster` | override Kick's Pusher key if Kick rotates it |
 | `botnames` | extra bot names to hide, comma-separated |
 | `debug` | show the connection status box |
