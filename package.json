@@ -1,0 +1,28 @@
+{
+  "name": "lchat4u",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Twitch, Kick and YouTube chat overlay for OBS",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "vue-tsc -b",
+    "build": "vue-tsc -b && node build.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@vitejs/plugin-vue": "^6.0.11",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.8",
+    "vite-plugin-singlefile": "^2.3.4",
+    "vue-tsc": "^3.3.14"
+  },
+  "dependencies": {
+    "vue": "^3.5.46"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "packageManager": "pnpm@12.21.0"
+}

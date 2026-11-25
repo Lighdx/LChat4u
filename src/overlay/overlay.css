@@ -1,0 +1,183 @@
+:root {
+  --size: 22px;
+  --font: 'Inter', system-ui, sans-serif;
+  --align: left;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--size);
+  color: #fff;
+}
+
+#stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+#chat {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8px 12px;
+  text-align: var(--align);
+}
+
+.msg {
+  line-height: 1.4;
+  padding: 3px 0;
+  overflow-wrap: anywhere;
+}
+
+.caps .text,
+.caps .name {
+  text-transform: uppercase;
+}
+
+.meta {
+  white-space: nowrap;
+}
+
+.plat,
+.badge {
+  height: 1em;
+  width: auto;
+  vertical-align: -0.14em;
+  margin-right: .28em;
+}
+
+.name {
+  font-weight: 800;
+}
+
+.name.owner {
+  background: #FFD600;
+  color: #0f0f0f;
+  padding: 0 .3em;
+  border-radius: .25em;
+  text-shadow: none;
+}
+
+.sep {
+  margin-right: .3em;
+}
+
+.action .text {
+  font-style: italic;
+}
+
+.emote {
+  display: inline-grid;
+  vertical-align: middle;
+  margin: -.3em .06em;
+}
+
+.emote>img {
+  grid-area: 1 / 1;
+  height: 1.75em;
+  width: auto;
+  justify-self: center;
+  align-self: center;
+}
+
+.anim-slide-left {
+  animation: in-x .35s cubic-bezier(.2, .8, .2, 1);
+  --from: -40px;
+}
+
+.anim-slide-right {
+  animation: in-x .35s cubic-bezier(.2, .8, .2, 1);
+  --from: 40px;
+}
+
+.anim-slide-up {
+  animation: in-y .35s cubic-bezier(.2, .8, .2, 1);
+  --from: 24px;
+}
+
+.anim-slide-down {
+  animation: in-y .35s cubic-bezier(.2, .8, .2, 1);
+  --from: -24px;
+}
+
+.anim-fade {
+  animation: in-fade .4s ease-out;
+}
+
+.anim-pop {
+  animation: in-pop .3s cubic-bezier(.3, 1.4, .5, 1);
+  transform-origin: var(--align) center;
+}
+
+@keyframes in-x {
+  from {
+    transform: translateX(var(--from));
+    opacity: 0;
+  }
+}
+
+@keyframes in-y {
+  from {
+    transform: translateY(var(--from));
+    opacity: 0;
+  }
+}
+
+@keyframes in-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes in-pop {
+  from {
+    transform: scale(.8);
+    opacity: 0;
+  }
+}
+
+.msg.out {
+  transition: opacity .6s ease;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msg {
+    animation: none !important;
+  }
+}
+
+#status {
+  position: fixed;
+  top: 6px;
+  right: 6px;
+  z-index: 9;
+  font: 600 11px/1.5 system-ui, sans-serif;
+  white-space: pre;
+  background: rgba(0, 0, 0, .65);
+  color: #ddd;
+  padding: 6px 9px;
+  border-radius: 6px;
+  text-shadow: none;
+}
+
+#status[hidden] {
+  display: none;
+}
+
+.no-badges .badge,
+.hide-icon-twitch .msg[data-p="twitch"] .plat,
+.hide-icon-kick .msg[data-p="kick"] .plat,
+.hide-icon-youtube .msg[data-p="youtube"] .plat {
+  display: none;
+}
